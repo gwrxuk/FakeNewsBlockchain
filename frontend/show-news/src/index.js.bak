@@ -1,21 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import App from './App';
 
-
-
+import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import newsApp from "./reducers";
-import{
-	addNews
-} from "./actions"
-
 const store = createStore(newsApp)
 
+import{
+	addNews,
+	listNews,
+	showNews,
+	setVisibilityFilters,
+	VisibilityFilters
+} from "./actions"
 
 const unsubscribe = store.subscribe(()=>console.log(store.getState()))
-console.log(unsubscribe);
+
 store.dispatch(addNews("news"))
 ReactDOM.render(
   <React.StrictMode>
